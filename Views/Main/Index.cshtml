@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Index</title>
+</head>
+
+<body style="background-color: lightgreen">
+    <div class="container text-center">
+
+        <div class="row" style="margin-left: 500px; margin-top: 180px">
+            <img src="~/images/login/login icon.png" style="width:200px" />
+        </div>
+
+        <div class="row" style="margin-top: 10px">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <form>
+                    <div class="form-group input-group" style="width:300px; margin-left: 330px">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input required class="form-control" type="text" name="userName" placeholder="потребителско име" />
+                    </div>
+
+                    <div class="form-group input-group" style="width:300px; margin-left: 330px">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input required class="form-control" type="password" name="password" placeholder="парола" />
+                    </div>
+
+                    <h5 @ViewBag.HiddenUser style="color:red; margin-top: 10px; margin-left: 30px">Грешен потребител!</h5>
+
+                    <div class="form-group" style="margin-top: 20px">
+                        <button asp-action="LoginUser" class="btn btn-primary" style="margin-left: 25px; width: 100px">Впиши се!</button>
+                    </div>
+
+                    <h4 style="margin-left: 15px">Нямате профил? <span><a asp-action="RegisterForm">Регистрирайте се!</a></span></h4>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
