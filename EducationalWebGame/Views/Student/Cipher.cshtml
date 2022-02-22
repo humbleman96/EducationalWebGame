@@ -1,0 +1,119 @@
+﻿@model EducationalWebGame.Models.Game
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.compat.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <title>Cipher</title>
+</head>
+<body style="background-color: lightgreen">
+    <div class="container text-center">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h3>
+                    <img style="height: 50px; width: 50px; margin-bottom: 20px" src="~/images/rockman/extra life.png" />
+                    <span>x @ViewBag.Lives</span>
+                </h3>
+            </div>
+
+            <div class="col-md-4">
+                <h3>Точки: @ViewBag.Points</h3>
+            </div>
+
+            <div class="col-md-4">
+                <h3>
+                    <img src="~/images/rockman/coin.jpg" class="img-responsive" style="height: 40px; width: 40px; margin-bottom: 5px" />
+                    <span>@ViewBag.Coins</span>
+                </h3>
+            </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 50px">
+            <h3>@Model.Question</h3>
+        </div>
+
+        <div class="row" style="margin-bottom: 5px">    
+            <div class="col-md-4 img-responsive">
+                <img src="~/images/rockman/rockman.png" />
+                <span>
+                    <img src="@ViewBag.CurrentPlayerHealth" style="margin-right: 90px; height: 250px; width: 40px" />
+                </span>
+            </div>
+
+            @for (var i = 0; i < Model.CorrectAnswer.Length; i++)
+            {
+                <div class="col">
+                    <form asp-action="ChangeLetterUp">
+                        <button style="background-color: transparent; border:hidden" @ViewBag.DisabledCipherButtons[i] name="letterPosition" value="@i" class="btn-sm btn-info">
+                            <img src="~/images/cipher/arrow up.png" style="width: 40px" />
+                        </button>
+                    </form>
+
+                    <h3>@ViewBag.Letters[i]</h3>
+
+                    <form asp-action="ChangeLetterDown">
+                        <button style="background-color: transparent; border:hidden" @ViewBag.DisabledCipherButtons[i] name="letterPosition" value="@i" class="btn-sm btn-info">
+                            <img style="width: 40px" src="~/images/cipher/arrow down.png" />
+                        </button>
+                    </form>
+                </div>
+            }
+            <div class="col-md-4 img-responsive">
+                <img class="img-responsive" src="@ViewBag.CurrentBossHealth" style="height: 250px; width:40px; margin-left: 150px" />
+                <span>
+                    <img src="@ViewBag.CurrentBossImage" style="height: 160px" />
+                </span>
+            </div>
+        </div>
+
+        <form asp-action="Unlock">
+            <div class="container" style="margin-bottom: 20px; margin-top: -30px">
+                <button @ViewBag.DisabledCheckButton style="margin-top: 30px" class="btn-primary btn-lg">Отключи</button>
+            </div>
+        </form>
+
+        <div class="row text-justify" style="margin-bottom: 20px">
+            <div class="col-md-6">
+                @for (var i = 0; i < ViewBag.Clues.Count; i++)
+                {
+                    <h3>@ViewBag.Clues[i]</h3>
+                }
+            </div>
+
+            <div class="col-md-6">
+                <img src="@ViewBag.AlphabetImage" />
+            </div>
+        </div>
+
+        <form asp-action="GiveClue">
+            <div class="row">
+                <div class="col-md-2">
+                    <button @ViewBag.DisabledClue style="background-color: transparent; border: hidden;">
+                        <img style="height: 100px" src="~/images/clue/clue.png" class="img-responsive" />
+                    </button>
+                </div>
+                <div class="col-md-8">
+                    <img src="@ViewBag.Message" />
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </form>
+
+        <form asp-action="ResetForm">
+            <div class="container">
+                <button @ViewBag.HiddenContentButton class="btn-primary btn-lg">@ViewBag.ContentButton</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>
