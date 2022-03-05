@@ -6,4 +6,4 @@
 5. Coins, Points and Lives
 6. Health bars and character images for both the boss and the player (Student)
 7. Clues for the different types of games
-8. Adding, updating and removing questions from a certain game category and viewing a ranklist of students based on points, coins and extra lives left (Teachers & Resource Teachers)
+8. Adding, updating and removing questions from a certain game category and viewing a ranklist of students based on their points, coins and extra lives left (Teachers & Resource Teachers)
